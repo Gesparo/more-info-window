@@ -1,6 +1,8 @@
 #Modal Window
 
-This simple modal window for personal projects
+This simple modal window for personal projects.
+
+Version: 1.0
 
 Stack:
  - Gulp 4.0

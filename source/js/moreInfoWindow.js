@@ -1,3 +1,14 @@
+/**
+ * Show modal window with information
+ *
+ * dependency :
+ *  - jquery
+ *  - malihu-custom-scrollbar-plugin
+ * @author Gesparo
+ * @link https://github.com/Gesparo/more-info-window
+ * @version 1.0
+ * @type {{init, load, destroy, loadCatalog}}
+ */
 var moreInfoWindow = (function () {
   var infoWindow = $('.more-info-window'),
       catalogBlock = infoWindow.find('.more-info-window__content-block'),
