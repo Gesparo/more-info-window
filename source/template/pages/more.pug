@@ -1,0 +1,52 @@
+-
+  var moreInfo = {
+      'name' : 'салон мебели \"Мозаика\"',
+      'name2' : 'Салон мебели \"Мозаика\"',
+      'date' : '28 июня 2017',
+      'calltracking_class' : 'some',
+      'default_phone' : '8 (800) 555 35 35'
+  }
+
+#policy.more-info
+  h2.more-info__title Политика конфиденциальности
+  .more-info__container
+
+    p.more-info__text.more-info_primary-text.more-info_sub-titled Сбор информации
+    p.more-info__text.
+      При оставлении заявки на ресурсе #{moreInfo.name} клиенты предоставляют следующие сведения:
+
+    ul.more-info__list
+      li.more-info__item Имя.
+      li.more-info__item Контактный телефон.
+      li.more-info__item E-mail
+
+    p.more-info__text.
+      Также администрация получает данные об IP-адресе посетителей, а также о типе браузера, времени нахождения на
+      сайте и прочие подобные сведения. Сбор ведётся с помощью сервисов статистики.
+
+    p.more-info__primary-text.more-info_primary-text.more-info_sub-titled Использование информации
+    p.more-info__text.
+      Вся полученная информация используется администрацией #{moreInfo.name} исключительно
+      в целях связи с клиентом.
+
+    p.more-info__primary-text.more-info_primary-text.more-info_sub-titled Защита персональных данных
+    p.more-info__text.
+      #{moreInfo.name2} обязуется не разглашать сведения, полученные от клиентов. Она хранится в
+      базе данных на локальном компьютере администрации. Доступ к компьютеру надёжно защищён паролем, который
+      имеется только у администратора сайта.
+
+    p.more-info__primary-text.more-info_primary-text.more-info_sub-titled Предоставление данных третьим лицам
+    p.more-info__text.
+      Полученные сведения не могут быть переданы третьим лицам, за исключением следующих случаев:
+
+    ul.more-info__list
+      li.more-info__item Для исполнения обязательств перед клиентом &ndash; только с его разрешения.
+      li.more-info__item В соответствии с обоснованными и применимыми требованиями закона.
+
+    p.more-info__primary-text.more-info_primary-text.more-info_sub-titled Срок действия согласия на обработку персональных данных
+    p.more-info__text.
+      Срок действия согласия на обработку персональных данных неограничен, при желании вы можете отозвать согласие на
+      обработку персональных данных по номеру телефона <span class="#{moreInfo.calltracking_class}">#{moreInfo.default_phone}</span>
+
+    p.more-info__text.more-info_additional-text.
+      Настоящая редакция политики конфиденциальности опубликована #{moreInfo.date} года.

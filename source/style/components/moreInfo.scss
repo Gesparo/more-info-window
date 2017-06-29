@@ -1,0 +1,31 @@
+.more-info {
+  &__title {
+    text-align: center;
+  }
+
+  &__text {
+    margin-bottom: .5rem;
+  }
+
+  &__list {
+    list-style-type: disc;
+    padding-left: 30px;
+  }
+
+  &__item {
+    list-style: disc;
+    margin-bottom: .5rem;
+  }
+
+  &_primary-text {
+    font-weight: bold;
+  }
+
+  &_additional-text {
+    font-style: italic;
+  }
+
+  &_sub-titled {
+    margin-bottom: 10px;
+  }
+}
