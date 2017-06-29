@@ -1,4 +1,6 @@
-#Gulp Workflow
+#Modal Window
+
+This simple modal window for personal projects
 
 Stack:
  - Gulp 4.0
