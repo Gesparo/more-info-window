@@ -45,9 +45,7 @@ var moreInfoWindow = (function () {
   };
 
   var load = function (id) {
-    content.load('more.html #' + id, function () {
-      _createScrollbar();
-    });
+    content.load('more.html #' + id);
   };
 
   var loadCatalog = function (number, completeFunction) {
@@ -248,13 +246,6 @@ var moreInfoWindow = (function () {
 
       return true;
     }
-  };
-
-  var _createScrollbar = function () {
-    catalogBlock.mCustomScrollbar({
-      theme : 'light',
-      scrollInertia : 400
-    });
   };
 
   var _setDefault = function () {
