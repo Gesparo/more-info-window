@@ -86,14 +86,35 @@ var moreInfoWindow = (function () {
     window : null,
 
     /**
+     * Store window content block
+     */
+    windowContent : null,
+
+    /**
+     * Settings for scrollbar
+     */
+    scrollbarSettings : {
+      theme : 'light',
+      scrollInertia : 400
+    },
+
+    /**
      * It's like constructor
      */
     init : function (windowClassName) {
       this.windowClassName = windowClassName;
 
-      var jqueryWindowClassName = '.' + windowClassName;
+      var jqueryWindowClassName = '.' + windowClassName,
+          window = $(jqueryWindowClassName);
 
-      this.window = $(jqueryWindowClassName);
+      this.window = window;
+
+      var jqueryContentClassName = '.' + windowClassName + '__content-block',
+          windowContent = window.find(jqueryContentClassName);
+
+      this.windowContent = windowContent;
+
+      windowContent.mCustomScrollbar(this.scrollbarSettings);
     },
 
     /**
@@ -128,6 +149,17 @@ var moreInfoWindow = (function () {
       }
 
       this.window.addClass(themeClassName);
+
+      var scrollbarTheme = this._getScrollbarTheme(theme);
+
+      if( this.scrollbarSettings.theme !== scrollbarTheme )
+      {
+        var newOptions = _clone( this.scrollbarSettings );
+
+        newOptions.theme = scrollbarTheme;
+
+        this._rebuildScrollbar( newOptions );
+      }
 
       return true;
     },
@@ -164,6 +196,8 @@ var moreInfoWindow = (function () {
 
       this.window.removeClass(themeClassName);
 
+      this._rebuildScrollbar( this.scrollbarSettings );
+
       return true;
     },
 
@@ -176,6 +210,43 @@ var moreInfoWindow = (function () {
      */
     _getThemeFullName : function (theme) {
       return this.windowClassName + '_theme-' + theme;
+    },
+
+    /**
+     * Return theme for scrollbar
+     *
+     * @param theme
+     * @returns {*}
+     * @private
+     */
+    _getScrollbarTheme : function (theme) {
+      var scrollbarTheme = 'light';
+
+      switch (theme) {
+        case 'light':
+          scrollbarTheme = 'dark';
+          break;
+
+        default:
+          break;
+      }
+
+      return scrollbarTheme;
+    },
+
+    /**
+     * Rebuild scrollbar
+     *
+     * @param options
+     * @returns {boolean}
+     * @private
+     */
+    _rebuildScrollbar : function (options) {
+      this.windowContent.mCustomScrollbar('destroy');
+
+      this.windowContent.mCustomScrollbar(options);
+
+      return true;
     }
   };
 
@@ -229,6 +300,47 @@ var moreInfoWindow = (function () {
 
   var _hideWindow = function () {
     infoWindow.fadeOut(150);
+  };
+
+  /**
+   * Cloning objects
+   *
+   * @param obj
+   * @returns {*}
+   * @private
+   */
+  var _clone = function (obj) {
+    var copy;
+
+    // Handle the 3 simple types, and null or undefined
+    if (null === obj || "object" !== typeof obj) return false;
+
+    // Handle Date
+    if (obj instanceof Date) {
+      copy = new Date();
+      copy.setTime(obj.getTime());
+      return copy;
+    }
+
+    // Handle Array
+    if (obj instanceof Array) {
+      copy = [];
+      for (var i = 0, len = obj.length; i < len; i++) {
+        copy[i] = _clone(obj[i]);
+      }
+      return copy;
+    }
+
+    // Handle Object
+    if (obj instanceof Object) {
+      copy = {};
+      for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = _clone(obj[attr]);
+      }
+      return copy;
+    }
+
+    throw new Error("Unable to copy obj! Its type isn't supported.");
   };
 
   return {
