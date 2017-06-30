@@ -20,10 +20,15 @@ var moreInfoWindow = (function () {
       initStatus = false;
 
   var init = function (options) {
+    _themeManager.init(mainClassName);
+
     if( !('undefined' === typeof options) && !('undefined' === typeof options.theme) )
     {
-      _themeManager.init(mainClassName);
       _themeManager.setTheme( options.theme );
+    }
+    else
+    {
+      _themeManager.removeAllThemes();
     }
 
     if( false === initStatus )
@@ -123,6 +128,20 @@ var moreInfoWindow = (function () {
       }
 
       this.window.addClass(themeClassName);
+
+      return true;
+    },
+
+    /**
+     * Remove all themes
+     *
+     * @returns {boolean}
+     */
+    removeAllThemes : function () {
+      for(var i = 0; i < this.listOfThemes.length; ++i)
+      {
+        this.removeTheme( this.listOfThemes[i] );
+      }
 
       return true;
     },
