@@ -304,7 +304,7 @@ var moreInfoWindow = (function () {
     var copy;
 
     // Handle the 3 simple types, and null or undefined
-    if (null === obj || "object" !== typeof obj) return false;
+    if (null === obj || "object" !== typeof obj) return obj;
 
     // Handle Date
     if (obj instanceof Date) {
